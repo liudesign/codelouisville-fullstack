@@ -15,8 +15,7 @@ footer.tsn-fixed {
     @include border-radius(0);
     background-color: $tsblue-med-dark;
   }
-}
-footer.tsn-fixed {
+
   button.tsn-action {
     background-color: adjust_color($tsblue, 20%);
     &:hover {
