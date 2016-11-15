@@ -1,0 +1,95 @@
+header.tsn-fixed {
+  top:0;
+}
+
+.tsn-nav-top {
+    background: #248ff1;
+    background: linear-gradient(to bottom, #248ff1 0, #0a5db0 100%);
+    width: 100%;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .5);
+    border-bottom: .0625rem solid shade($tsblue, 60%);
+    min-height: em(73px);
+    padding: 0;
+    position: relative;
+    z-index: 100;
+  }
+
+.tsn-logo{
+  padding: em(5px) em(60px);
+  //margin-top: em(-5px);
+  @include icon-background($ts-logo, em(112px), em(35px));
+}
+
+.tsn-nav-middle {
+    //box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .5);
+    background-color: $tsblue-darknav;
+    //background: linear-gradient(to bottom, #437cb0 0, #376390 100%);
+    min-height: em(56px);
+    padding: 0 1.25rem;
+  }
+
+.tsn-navbar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 4.125rem;
+    line-height: 3.45;
+  }
+
+.tsn-navbar-items {
+    -ms-flex-positive: 1;
+    margin-right: .9375rem;
+    width: auto;
+    //flex: 1 100%;
+    padding-top: em(5px);
+    @include transition(all, $effect, $timing);
+  }
+
+.tsn-navbar-items-a{
+    color: $tsblue-darker;
+    text-transform: uppercase;
+    font-size: em(9px);
+    line-height: 2;
+    font-weight: 500;
+    @include transition(all, $effect, $timing);
+  }
+
+.tsn-navbar-items-a.tsn-current {
+      color: $tsblue-light;
+  }
+
+.tsn-branding{
+  .tsn-navbar {
+    height: 100%;
+    //justify-content: center;
+
+    .tsn-navbar-items {
+      display: inline-block;
+      flex-basis: 10%;
+      //margin: auto;
+      &:nth-of-type(2) {
+        text-align: center;
+      }
+      &:nth-of-type(3) {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.sectionHeader.center{
+  text-align: center;
+  text-transform: uppercase;
+  font-size: em(15px);
+  font-weight: 600;
+  color: $tsblue-primary;
+  padding-bottom: em(26px);
+  background: none;
+}

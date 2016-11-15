@@ -1,0 +1,67 @@
+// ==========================================================================
+// Buttons
+// ==========================================================================
+
+/*************** base buttons *******************/
+
+button, .btn {
+  -webkit-border-radius: .1875rem;
+  -moz-border-radius: .1875rem;
+  border-radius: em(3px);
+  padding: em(12px) em(18px);
+  color: $tsblue-light;
+  font-size: em(18px);
+  line-height: 1.33;
+  margin: 0;
+  text-align: center;
+  font-weight: 300;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  user-select: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  &:hover{
+    cursor: pointer;
+    background-color: $tsblue !important;
+  }
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  @include box-sizing();
+}
+
+.btn-apply{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: em(16px) em(10px) em(16px) em(10px);
+  text-transform: capitalize;
+  font-size: em(15px);
+  background-color: $tsblue-medium;
+}
+
+.bgcolor_main_med {
+  background: $tsblue;/*!* IE9 SVG, needs conditional override of 'filter' to 'none' *!*/;
+}
+
+[class^="btn--"] {
+  @extend %center-align;
+  @extend %btn;
+  margin-bottom: em(20px, 14px); 
+  @include mq(small) {
+    width: 100%;
+  }
+  @include mq(medium) {
+    width: auto;
+    display: inline-block;
+    @include doubly(20px);
+  }
+}

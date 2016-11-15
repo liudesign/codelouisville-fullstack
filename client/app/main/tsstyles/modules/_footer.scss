@@ -1,0 +1,27 @@
+footer.tsn-fixed {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 0 em(-4px);
+  padding: 0;
+  bottom:0;
+  z-index: 2;
+  //display: -ms-flexbox;
+  //display: flex;
+  @include transition(all, $effect, $timing);
+
+  min-height: em(60px);
+  height: auto;
+  button{
+    @include border-radius(0);
+    background-color: $tsblue-med-dark;
+  }
+}
+footer.tsn-fixed {
+  button.tsn-action {
+    background-color: adjust_color($tsblue, 20%);
+    &:hover {
+      cursor: pointer;
+      background-color: saturate($tsblue, 100%) !important;
+    }
+  }
+}

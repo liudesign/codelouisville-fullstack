@@ -1,0 +1,441 @@
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+// BEM selectors
+
+@mixin e($element) {
+	&__#{$element} {
+    @content;
+  }
+}
+@mixin m($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+//prefix
+
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  #{$property}: #{$value};
+}
+
+//Usage
+//.element {
+//	@include prefix(transform, rotate(42deg), webkit ms);
+//}
+
+
+// Media queries
+
+@mixin mq($break) {
+  @if $break == "small" {
+    @media (min-width: $brkpoint-sm) and (max-width: $brkpoint-md) {
+      @content;
+    }
+  }
+  @else if $break == "medium" {
+    @media (min-width: $brkpoint-md + 1) {
+      @content;
+    }
+  }
+  @else if $break == "large" {
+    @media (min-width: $brkpoint-lg) {
+      @content;
+    }
+  }
+   @else {
+   	@error "Whoops! No value could be retrieved for `#{$break}`. "
+  }
+}
+
+// Generate modifier color classes
+
+@mixin bg-colors($map) {
+	@each $theme, $color in $map {
+		&--#{$theme} {
+			background-color: $color;    
+		}
+	}
+}
+
+// Generating :before or :after pseudo-element shapes
+
+@mixin p-el(
+	$el,
+	$el-w: null,
+	$el-h: null) {
+	@if $el == "before" or $el == "after" { 
+	  &:#{$el} {
+		  @extend %pseudos;
+		  width: $el-w;
+	  	height: $el-h;
+	    @content;
+	  }
+	} 
+	@else {
+    @error "`#{$el}` is not a valid pseudo-element.";
+	}
+}
+
+// Image replacement
+
+@mixin img-replace($img, $w, $h, $disp: block) {
+	background-image: url('#{$path--rel}/#{$img}');
+	background-repeat: no-repeat;
+	width: $w;
+	height: $h;
+	display: $disp;
+}
+      
+// Adjacent sibling margins
+
+@mixin doubly($margin: 1em) {
+	& + & {
+	  margin-left: $margin;
+    @content;
+	}
+}
+
+// Grid Columns
+     
+@mixin g-columns {
+  @for $i from 1 through $g-col-count {
+    $context: g-context($g-col-width, $g-col-count, $g-gutter-width) !global;
+    $target: ($g-col-width * $i) + ($g-gutter-width * ($i - 1));
+    
+    // Generate column modifier classes
+    &--#{$i} {
+      width: percentage($target / $context);
+    }
+  }
+}
+// gradient
+
+@mixin gradient-2($c1, $endC){
+  background: $c1; /* Old browsers */
+  background: -moz-linear-gradient(top,  $c1 0%, $c1 42%,  $endC 98%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $c1 0%, $c1 42%, $endC 98%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  $c1 0%, $c1 42%, $endC 98%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$c1', endColorstr='$endC',GradientType=0 ); /* IE6-9 */
+
+}
+
+@mixin gradient($start-color, $end-color, $orientation)
+{
+  background: $start-color;
+  @if $orientation == vertical
+  {
+    // vertical
+    background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color));
+    background: -webkit-linear-gradient(top,  $start-color 0%,$end-color 100%);
+    background: -o-linear-gradient(top,  $start-color 0%,$end-color 100%);
+    background: -ms-linear-gradient(top,  $start-color 0%,$end-color 100%);
+    background: linear-gradient(to bottom,  $start-color 0%,$end-color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=0 );
+  }
+  @else if $orientation == horizontal
+  {
+    // horizontal
+    background: -moz-linear-gradient(left,  $start-color 0%, $end-color 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$start-color), color-stop(100%,$end-color));
+    background: -webkit-linear-gradient(left,  $start-color 0%,$end-color 100%);
+    background: -o-linear-gradient(left,  $start-color 0%,$end-color 100%);
+    background: -ms-linear-gradient(left,  $start-color 0%,$end-color 100%);
+    background: linear-gradient(to right,  $start-color 0%,$end-color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+  }
+  @else
+  {
+    // radial
+    background: -moz-radial-gradient(center, ellipse cover,  $start-color 0%, $end-color 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$start-color), color-stop(100%,$end-color));
+    background: -webkit-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+    background: -o-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+    background: radial-gradient(ellipse at center,  $start-color 0%,$end-color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+  }
+}
+
+// transition
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+// USAGE
+//a {
+//  color: gray;
+//  @include transition(color .3s ease);
+//  &:hover {
+//    color: black;
+//  }
+//}
+
+// animation
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+// USAGE
+// @include keyframes(slide-down) {
+//  0% { opacity: 1; }
+//  90% { opacity: 0; }
+//}
+//
+//.element {
+//  width: 100px;
+//  height: 100px;
+//  background: black;
+//  @include animation('slide-down 5s 3');
+//}
+
+//opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+// svg usage with image fallback
+
+$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false){
+  background-image: url(#{$image-path}/#{$name}.svg);
+  @if($size){
+    background-size: $size;
+  }
+  .no-svg &{
+    background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+    @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+      background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+    }
+  }
+}
+
+@mixin clearfix {
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+}
+
+// circle
+
+@mixin circle (
+  $size,
+  $color: inherit
+) {
+
+  border-radius: 50%;
+  display: inline-block;
+
+  @if $color == inherit {
+    // If user wants to inherit the color,
+    // take advantage of the fact that border
+    // color defaults to the text color of the element.
+    border-width: $size / 2;
+    border-style: solid;
+    height: 0;
+    width: 0;
+  }
+  @else {
+    // Otherwise, just use background-color.
+    background-color: $color;
+    height: $size;
+    width: $size;
+  }
+
+}
+
+//border radius
+
+@mixin border-radius($size...) {
+  -webkit-border-radius: $size;
+  -moz-border-radius:  $size;
+  -ms-border-radius: $size;
+  -o-border-radius: $size;
+  border-radius: $size;
+}
+
+// box sizing
+
+@mixin box-sizing($type: border-box) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing: $type;
+  -o-box-sizing: $type;
+  -ms-box-sizing: $type;
+  box-sizing: $type;
+}
+
+// flex layout, flex box
+
+@mixin flexbox {
+  display:-webkit-box; // old
+  display:-moz-box; // old
+  display:-ms-flexbox; // ie
+  display:-webkit-flex; // new
+  display:flex; // new
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -ms-flex:  $values;
+  -webkit-flex:  $values;
+  flex:  $values;
+}
+
+@mixin flex-order($order){
+  -webkit-box-ordinal-group: $order; // old
+  -moz-box-ordinal-group: $order; // old
+  -ms-flex-order: $order; // ie
+  -webkit-order: $order; // new
+  order: $order; // new
+}
+
+@mixin flex-direction($direction)
+{
+  @if $direction == column {
+    -webkit-flex-direction:vertical;
+    -moz-flex-direction:vertical;
+    -ms-flex-direction:column;
+    -webkit-flex-direction:column;
+    flex-direction:column;
+  }
+  @else {
+    -webkit-flex-direction:horizontal;
+    -moz-flex-direction:horizontal;
+    -ms-flex-direction:row;
+    -webkit-flex-direction:row;
+    flex-direction:row;
+  }
+}
+
+// misc
+
+@mixin box-shadow( $horizOffset: 10px, $vertOffset: 10px, $blur: 0px, $spread: 0px, $color: #000000 ) {
+  -webkit-box-shadow: $horizOffset $vertOffset $blur $spread $color;
+  -moz-box-shadow: $horizOffset $vertOffset $blur $spread $color;
+  box-shadow: $horizOffset $vertOffset $blur $spread $color;
+  border-collapse: separate; //render shadows properly in IE
+}
+
+@mixin box-shadow-inset($horizOffset, $vertOffset, $blur, $color) {
+ // Same parameters as @mixin box-shadow,
+ // but creates an inner shadow
+ // for pressed or recessed effects.
+  -webkit-box-shadow: $horizOffset $vertOffset $blur $color inset;
+  -moz-box-shadow: $horizOffset $vertOffset $blur $color inset;
+  -ms-box-shadow: $horizOffset $vertOffset $blur $color inset;
+  -o-box-shadow: $horizOffset $vertOffset $blur $color inset;
+  box-shadow: $horizOffset $vertOffset $blur $color inset;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+// flip image
+@mixin flipH{
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+
+}
+
+
+//Retina image for iOS devices
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx) {
+    background-image: url($image);
+    background-size: $width + px $height + px;
+    background-size: $width / 10 + rem $height / 10 + rem;
+  }
+}
+//USAGE
+//.logo{
+//  background:url(logo.png) no-repeat;
+//  @include image-2x(logo-hd.png", 120, 30);
+//}
+
+
+
+@mixin icon-replace-fill($src, $fill-default, $fill-new) {
+  $escape-fill-default: escape($fill-default);
+  $escape-fill-new: escape($fill-new);
+  $data-uri: data-uri('image/svg+xml;charset=UTF-8', "#{src}");
+  $replace-src: replace("#{data-uri}", "#{escape-fill-default}", "#{escape-fill-new}");
+  background-image:e($replace-src);
+}
+
+@mixin icon-background($src, $w:em(10px), $h:em(10px)){
+  background-image: url("data:image/svg+xml;base64, #{$src}");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: #{$w} #{$h};
+  display: inline-block;
+  min-width: #{$w};
+  min-height: #{$h};
+}
+
+@mixin icon-size($w:em(10px), $h:em(10px)){
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: #{$w} #{$h};
+  display: inline-block;
+  min-width: #{$w};
+  min-height: #{$h};
+}
+
+

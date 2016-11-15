@@ -1,0 +1,390 @@
+.deposit-content {
+  margin: 0 auto;
+  padding: em(120px) 0 0;
+  background-color: #f0f0f0;
+  @include clearfix;
+
+  .deposit-header {
+    padding: em(25px);
+    padding-bottom: 0;
+  }
+
+  .deposit-title {
+    width: auto;
+    display: inline-block;
+    margin: 0;
+    line-height: 1;
+    font-size: em(17px);
+    font-weight: 300;
+    padding: em(4px) 0 em(8px);
+  }
+
+  .qd-main .qd-quickDeposit {
+    position: relative;
+
+    a:link, a:visited, .qd-lnk{
+      color: $tsblue;
+      text-decoration: none;
+      font-weight: 400;
+
+    }
+
+    > *{
+      padding: em(5px) em(25px) 0;
+    }
+    .txt-fld{
+      width: 100%;
+      position: relative;
+      @include box-sizing;
+    }
+
+    .qd-amountButton,
+    .qd-mainBtn {
+      opacity: .85;
+      position: relative;
+      text-transform: capitalize;
+    }
+
+    .qd-amountButton {
+      width: 100%;
+      min-height: em(46px);
+      font-size: 18px;
+      font-weight: 100;
+      letter-spacing: .05em;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: em(2px);
+      background-color: #1f5587;
+    }
+
+    .qd-mainBtn {
+      width: 100%;
+      margin: 4px 0 14px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      text-decoration: none;
+      cursor: pointer;
+      color: $tsblue-light;
+      border: 0;
+      font-weight: 100;
+      letter-spacing: .025em;
+      position: relative;
+      &:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        width: em(12px);
+        height: em(12px);
+        z-index: 100;
+        top: 19px;
+        left: calc(45% - 56px);
+        //background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxI…ksMi45LDAsMSwxLDMuOCwwQTAuMjQsMC4yNCwwLDAsMCwxNi4yOSwyNC4wOVoiLz48L3N2Zz4=');
+        @include icon-background($icon-safe, em(10px), em(10px));
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .qd-ezMoneyInfo{
+      padding: 0;
+
+      .qd-label {
+        width: auto;
+        padding: 0 em(30px) em(5px);
+        font-size: em(16px);
+        color: #565656;
+        font-weight: normal;
+        @include clearfix;
+      }
+
+      .qd-depositAlign {
+        float: left;
+      }
+    }
+  }
+
+  .ezMoneyImg {
+    width: 139px;
+    height: 50px;
+  }
+
+  .qd-box {
+    background: #fff;
+    @include clearfix;
+
+    .qd-box-left-col {
+      float: left;
+      width: 40%;
+      padding: 19px 5px 0 15px;
+    }
+
+    .qd-box-right-col {
+      float: left;
+      width: 60%;
+      padding: 10px;
+      background: #fff;
+      min-height: 72px;
+
+      span {
+        font-size: 12px;
+        width: 100%;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 0;
+      }
+    }
+  }
+
+  .qd-header{
+    color: palette(grey, x-light);
+    padding: em(5px) 0;
+  }
+
+  .qd-ezmoneyFields {
+    margin: em(10px) 0;
+    @include clearfix;
+  }
+
+  .qd-bonusCode {
+    input{
+      padding: em(11px) em(78px) em(12px) em(17px);
+      font-size: em(18px);
+      font-weight: 300;
+    }
+
+  }
+  .qd-ezmoneyDesc {
+    h3, p {
+      margin: em(5px) 0 0;
+      font-weight: 600;
+      font-size: em(19px);
+    }
+    p{
+      font-size: em(13px);
+      margin: em(2px) 0;
+      font-weight: 300;
+      line-height: 1;
+    }
+  }
+
+  .qd-changeDeposit {
+    float: right;
+    font-weight: 400;
+    a {
+      text-decoration: none;
+      font-weight: 400;
+      color: #248ff1;
+    }
+  }
+
+  .qd-amountToDeposit-minMax {
+    position: absolute;
+    color: #BEBEBE;
+    text-align: right;
+    right: 20px;
+    bottom: em(30px);
+    font-size: 12px;
+    letter-spacing: .05em;
+    box-sizing: border-box;
+    font-weight: 500;
+    >*{
+      font-weight: 500;
+    }
+  }
+
+  .qd-amountToDeposit {
+    height: 56px;
+    width: 100%;
+    font-weight: 400;
+    text-align: left;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 1px 32px 0;
+    border: 0;
+    color: #666;
+  }
+
+  .qd-amountToDeposit-dollar-sign {
+    position: absolute;
+    color: #666;
+    text-align: left;
+    left: 20px;
+    top: 1px;
+    font-size: 16px;
+    box-sizing: border-box;
+    line-height: 56px;
+    font-weight: 400;
+    display: inline-block;
+  }
+
+  .qd-amtWrapper:nth-child(3) {
+    padding: 0 10px;
+    width: 38%;
+    box-sizing: border-box;
+  }
+
+  .qd-amtWrapper {
+    width: 31%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 10px;
+    display: inline-block;
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+  }
+
+  .qd-accountNumber {
+    margin: 0;
+    position: relative;
+    @include transition(all, $effect, $timing);
+    > *{
+      padding: em(10px) 0 0;
+    }
+
+    #routingNumWrapper,
+    #accountNumWrapper{
+      opacity:0;
+      max-height: 0;
+      overflow: hidden;
+      @include transition(all, $effect, $timing)
+    }
+
+    #qd-accountNumber-label,
+    #qd-routingNumber-label {
+      font-size: em(16px);
+      color: palette(black, dark);
+      position: absolute;
+      top: em(30px);
+      left: em(15px);
+      @include transition(all, $effect, $timing);
+      z-index: 0;
+    }
+
+    input {
+      width: 100%;
+      position: relative;
+      padding: em(13px) em(12px);
+      margin: em(10px) 0 0;
+      min-height: em(14px);
+      background-color: rgba(255,255,255,0.8);
+      font-size: em(16px);
+      z-index: 20;
+    }
+
+    // TODO: check to see if ng-dirty will prevent text from moving back down.
+    input#qd-account-number.ng-dirty + #qd-accountNumber-label,
+    input#qd-routing-number.ng-dirty + #qd-routingNumber-label,
+    input#qd-account-number:focus + #qd-accountNumber-label,
+    input#qd-routing-number:focus + #qd-routingNumber-label {
+      color: palette(grey, light);
+      top: em(-2px);
+      left: 0;
+    }
+  }
+
+  input[type="text"]{
+    width: 100%;
+    border: 1px solid transparent;
+    &:focus{
+      border: 1px solid $tsblue;
+    }
+  }
+
+  .qd-amtInput {
+    width: 100%;
+    float: none;
+    box-sizing: border-box;
+    position: relative;
+    @include clearfix;
+  }
+
+  .qd-col1 {
+    width: 40%;
+    position: relative;
+    float: left;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"] {
+    height: 1em;
+    width: 1em;
+    min-width: 1em;
+    margin: 1px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  input[type="radio"] + label {
+    border: 1px solid transparent;
+    cursor: pointer;
+    position: relative;
+    left: em(30px);
+    font-size: em(18px);
+    font-weight: 300;
+
+    &::before,
+    &::after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: em(-.9px);
+      left: em(-28px);
+      height: em(22px);
+      width: em(22px);
+      border-radius: 50%;
+      border: 1px solid #c8c8c8;
+      background: #fff;
+    }
+  }
+
+  input[type=radio]:checked+label::after {
+    top: em(2px);
+    left: em(-25px);
+    width: em(17px);
+    height: em(17px);
+    background-color: $tsblue;
+    border: 2px solid #fff;
+    z-index: 200;
+  }
+  input#qd-saving[type=radio]:checked+label::after {
+    left: em(-25.5px);
+  }
+
+  input#qd-checking[type=radio]:checked ~ .qd-accountNumber > #accountNumWrapper,
+  input#qd-checking[type=radio]:checked ~ .qd-accountNumber > #routingNumWrapper,
+  input#qd-saving[type=radio]:checked ~ .qd-accountNumber > #accountNumWrapper{
+    opacity: 1;
+    max-height:500px;
+  }
+
+  .qd-success span {
+    padding-left: em(8px);
+  }
+
+  .qd-buttonWrapper {
+    padding: 5px 0;
+  }
+
+  .qd-terms {
+    font-weight: 400;
+    font-size: 100%;
+    text-align: center;
+    max-width: em(280px);
+    margin: auto;
+    line-height: 1.3;
+  }
+
+}

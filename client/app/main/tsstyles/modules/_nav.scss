@@ -1,0 +1,38 @@
+// ==========================================================================
+// Nav
+// ==========================================================================
+
+.nav {
+	margin-top: em(20px);
+	margin-bottom: em(30px);
+
+  > li{
+    > a{
+      &:hover{
+        background-color: transparent;
+      }
+    }
+  }
+
+
+  // todo refactor to mixins, variables
+  &.mainBar{
+    color: $tsblue-light;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#228ced+0,0e65ba+81,0e65ba+100 */
+    background: #228ced; /* Old browsers */
+    background: -moz-linear-gradient(top,  #228ced 0%, #0e65ba 81%, #0e65ba 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #228ced 0%,#0e65ba 81%,#0e65ba 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #228ced 0%,#0e65ba 81%,#0e65ba 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#228ced', endColorstr='#0e65ba',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+.tsn-fixed {
+  position: fixed;
+  left:0;
+  width:100%;
+  z-index: 2;
+  width: 100%;
+  -webkit-overflow-scrolling:touch;
+  overflow-y: auto;
+}

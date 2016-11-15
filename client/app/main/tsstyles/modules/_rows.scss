@@ -1,0 +1,82 @@
+.funding-option {
+  width: 100%;
+  @include gradient-2(palette(grey, xxxx-light), palette(grey, xxx-light));
+  //background: linear-gradient(to bottom, palette(grey, xxxx-light) 0, palette(grey, xxx-light) 100%);
+  color: #4F4F4F;
+  min-height: 50px;
+  padding: em(5px) em(20px);
+  @include clearfix;
+  display: block;
+  @include transition;
+  &:hover{
+    @include gradient-2($tsblue-light, palette(grey, xxx-light));
+    cursor: pointer;
+  }
+
+  .cleared {
+    overflow: hidden;
+    @include clearfix;
+  }
+
+  .short-description, .title {
+    font-size: em(12px);
+    line-height: 1.2;
+    color: palette(grey, x-light);
+    margin: 0 em(5px) em(8px) 0;
+  }
+
+  .title {
+    font-weight: 400;
+    font-size: em(19px);
+    margin: em(8px) em(5px) em(3px) 0;
+    color: palette(grey, light);
+  }
+
+  .column-wrapper {
+    display:flex;
+    .column {
+      display: inline-block;
+      float: left;
+      @include flex-direction(column);
+      &.col1 {
+        width: 33%;
+        margin-right: em(15px);
+        img, span{
+          margin-top:16%;
+        }
+      }
+      &.col2 {
+        width: 75%;
+        border-right: 1px solid #CACACA;
+      }
+      &.col3 {
+        width: 5%;
+        margin-left: em(6px);
+      }
+    }
+  }
+}
+
+.sectionHeader, .sectionFooter{
+  color: palette(grey, light);
+  text-transform: capitalize;
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+  background-color: palette(grey, xxxx-light);
+  padding: em(10px) em(16px);
+  display: block;
+}
+
+.sectionHeader{
+  @include gradient-2(palette(grey, xxxx-light), palette(grey, xxx-light));
+  font-size: em(18px);
+}
+
+.sectionFooter{
+  background-color: palette(grey, xxxx-light);
+  color: $tsblue;
+  text-align: center;
+  padding: em(20px);
+  display: block;
+}
