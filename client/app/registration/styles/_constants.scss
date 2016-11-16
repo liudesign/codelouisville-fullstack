@@ -1,0 +1,35 @@
+/* Layout container limits and responsive breakpoints */
+$layout-width-min: 320px;
+$layout-width-phone: 480px;
+$layout-width-tablet: 768px;
+$layout-width-desktop: 1000px;
+
+
+/* Media query shortcuts */
+$highdensity:       #{"only screen and (-webkit-min-device-pixel-ratio: 1.5)"},
+                    #{"only screen and (min--moz-device-pixel-ratio: 1.5)"},
+                    #{"only screen and (-o-min-device-pixel-ratio: 3/2)"},
+                    #{"only screen and (min-device-pixel-ratio: 1.5)"};
+
+$tiny:              #{"only screen and (max-width: 479px)"};
+$phone:             #{"only screen and (max-width: 767px)"};
+$tablet:            #{"only screen and (min-width: 768px) and (max-width: 1023px)"};
+$desktop:           #{"only screen and (min-width: 1024px)"};
+
+$min-width-phone:             #{"only screen and (min-width: ${layout-width-phone})"};
+$min-width-tablet:             #{"only screen and (min-width: ${layout-width-tablet})"};
+$min-width-desktop:            #{"only screen and (min-width: ${layout-width-desktop})"};
+
+/*Colors*/
+$default-input-border-color: #aaa;
+$inactive-input-background-color: #ddd;
+$success-color: #1cb61c;
+$focus-color: #56bedf;
+$error-color: #f01818;
+
+$idChkMsg-screen:#248FF1;
+$idChkMsg-phonelink:#248FF1;
+
+/* image url */
+//$checkmark-url: "./images/check.png";
+$checkmark-margin-left: 2px;

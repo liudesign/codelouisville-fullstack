@@ -1,0 +1,17 @@
+.has-error{
+  .form-control{
+    color: $error;
+    border-color: $error;
+    &:focus{
+      border-color: $error;
+      box-shadow: none;
+    }
+  }
+  .help-block{
+    color: $tsblue-light;
+    background-color: $error;
+    padding: em(5px) em(15px);
+    margin-top: em(-18px);
+  }
+
+}

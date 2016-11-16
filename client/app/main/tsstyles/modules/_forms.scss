@@ -32,7 +32,7 @@ form, .form {
 }
 
 input,
-textarea {
+textarea, .form-control {
   background-color: transparentize($tsblue-light, .01);
   border: 1px solid transparent;
   display: block;
@@ -41,18 +41,22 @@ textarea {
   padding: em(17px) em(16px) em(17px);
   width: 100%;
   box-shadow: none;
+  height: auto;
 
   @include border-radius(.2em);
   @include transition(all, $effect, $timing);
 
   &:hover{
     background-color: $tsblue-light;
+    box-shadow: none;
   }
   &:focus{
     border-color: $tsblue;
+    box-shadow: none;
   }
 }
-input{
+input, #registrationStateSelect,
+.form-control{
   padding-left: em(110px);
 }
 
@@ -87,7 +91,7 @@ form.registration {
   box-sizing: border-box;
   display: block;
   min-height: 100%;
-  padding: em(158px) em(20px) em(60px);
+  padding: 0 0 em(60px);
   width: 100%;
 }
 
@@ -133,7 +137,7 @@ form.registration {
     @include transition(all, $effect, $timing);
 
     &:hover{
-      background-color: $tsblue-light;
+      //background-color: $tsblue-light;
       cursor: pointer;
     }
     &:focus{

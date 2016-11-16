@@ -1,0 +1,353 @@
+{
+  "config": {
+    "fields": [
+      [
+        {
+          "name": "email",
+          "label": "EMAIL ADDRESS",
+          "placeholder": "Email Address",
+          "labelClasses": "label-example1 label-example2",
+          "inputClasses": "input-example",
+          "required": true,
+          "requiredMessage": "You must enter a valid email address.",
+          "pattern": "[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?",
+          "patternMessage": "You must enter a valid email address.",
+          "vpv": "/Account/Signup/EmailAddress",
+          "maxLength": 128,
+          "raHook": true,
+          "confirm": true,
+          "confirmSuccessVPV": "/Account/Signup/EmailAddressConfirm"
+        },
+        {
+          "name": "firstname",
+          "label": "FIRST NAME",
+          "placeholder": "First Name",
+          "required": true,
+          "requiredMessage": "You must enter your first name.",
+          "pattern": "^[- A-Za-z0-9,.']+$",
+          "patternMessage": "You have entered invalid characters.",
+          "vpv": "/Account/Signup/FirstName",
+          "maxLength": 30
+        },
+        {
+          "name": "lastname",
+          "label": "LAST NAME",
+          "placeholder": "Last Name",
+          "required": true,
+          "requiredMessage": "You must enter your last name.",
+          "pattern": "^[- A-Za-z0-9,.']+$",
+          "patternMessage": "You have entered invalid characters.",
+          "vpv": "/Account/Signup/LastName",
+          "maxLength": 30
+        },
+        {
+          "name": "suffixLabel",
+          "type": "select",
+          "options": [
+            {
+              "v": "",
+              "n": "Optional"
+            },
+            {
+              "v": "Jr.",
+              "n": "Jr."
+            },
+            {
+              "v": "Sr.",
+              "n": "Sr."
+            },
+            {
+              "v": "I",
+              "n": "I"
+            },
+            {
+              "v": "II",
+              "n": "II"
+            },
+            {
+              "v": "III",
+              "n": "III"
+            },
+            {
+              "v": "IV",
+              "n": "IV"
+            },
+            {
+              "v": "V",
+              "n": "V"
+            },
+            {
+              "v": "VI",
+              "n": "VI"
+            },
+            {
+              "v": "VII",
+              "n": "VII"
+            },
+            {
+              "v": "VIII",
+              "n": "VIII"
+            },
+            {
+              "v": "IX",
+              "n": "IX"
+            }
+          ],
+          "label": "SUFFIX"
+        },
+        {
+          "name": "gender",
+          "type": "select",
+          "options": [
+            {
+              "v": "",
+              "n": "Optional"
+            },
+            {
+              "v": "M",
+              "n": "Male"
+            },
+            {
+              "v": "F",
+              "n": "Female"
+            }
+          ],
+          "label": "GENDER"
+        }
+      ],
+      [
+        {
+          "name": "addr1",
+          "label": "ADDRESS LINE 1",
+          "placeholder": "Number, Street Name",
+          "required": true,
+          "requiredMessage": "You must enter your address.",
+          "pattern": "^[- A-Za-z0-9.,#\/:']*$",
+          "patternMessage": "You have entered invalid characters.",
+          "vpv": "/Account/Signup/StreetAddress",
+          "maxLength": 80
+        },
+        {
+          "name": "addr2",
+          "label": "ADDRESS LINE 2",
+          "placeholder": "Apt #",
+          "pattern": "^[- A-Za-z0-9.,#\\/:']*$",
+          "patternMessage": "You have entered invalid characters.",
+          "maxLength": 80
+        },
+        {
+          "name": "zip",
+          "label": "ZIP CODE",
+          "placeholder": "#####",
+          "required": true,
+          "requiredMessage": "You must enter your zip code.",
+          "pattern": "^\\d{5}(?:\\-?\\d{4})?$",
+          "patternMessage": "You have entered invalid characters.",
+          "patternFailureVPV": "/Account/Signup/ZipCode/Error/InvalidFormat",
+          "vpv": "/Account/Signup/ZipCode",
+          "maxLength": 5,
+          "updateLocation": true,
+          "type": "tel"
+        },
+        {
+          "name": "city",
+          "label": "CITY AND STATE",
+          "placeholder": "City",
+          "required": true,
+          "requiredMessage": "You must enter your city.",
+          "pattern": "^[A-Za-z0-9](\\.?[-' ]?[A-Za-z0-9]*)*$",
+          "patternMessage": "You have entered invalid characters.",
+          "vpv": "/Account/Signup/City",
+          "maxLength": 27
+        },
+        {
+          "name": "stateSelect",
+          "type": "select",
+          "options": "content.states",
+          "required": true,
+          "requiredMessage": "You must enter your state.",
+          "updateLocation": true,
+          "vpv": "/Account/Signup/State"
+        },
+        {
+          "name": "needsFormerAddress",
+          "type": "radio",
+          "options": [
+            {
+              "v": "No",
+              "n": "Yes",
+              "checked": true
+            },
+            {
+              "v": "Yes",
+              "n": "No"
+            }
+          ],
+          "label": "Have you lived in your current residence for the past 2 years or more?",
+          "labelClasses": "nonheader",
+          "specialMessage": "Please provide your previous address",
+          "formerAddress": true
+        },
+        {
+          "name": "f_addr1",
+          "label": "ADDRESS LINE 1",
+          "placeholder": "Number, Street Name",
+          "formerRequired": true,
+          "requiredMessage": "You must enter your former address.",
+          "pattern": "^[- A-Za-z0-9.,#\\/:']*$",
+          "patternMessage": "You have entered invalid characters.",
+          "formerAddress": true,
+          "maxLength": 80
+        },
+        {
+          "name": "f_addr2",
+          "label": "ADDRESS LINE 2",
+          "placeholder": "Apt #",
+          "pattern": "^[- A-Za-z0-9.,#\\/:']*$",
+          "patternMessage": "You have entered invalid characters.",
+          "formerAddress": true,
+          "maxLength": 80
+        },
+        {
+          "name": "f_zip",
+          "label": "ZIP CODE",
+          "placeholder": "#####",
+          "formerRequired": true,
+          "requiredMessage": "You must enter your former zip code.",
+          "pattern": "^\\d{5}(?:\\-?\\d{4})?$",
+          "patternMessage": "You have entered invalid characters.",
+          "formerAddress": true,
+          "maxLength": 5,
+          "type": "tel"
+        },
+        {
+          "name": "f_city",
+          "label": "CITY AND STATE",
+          "placeholder": "City",
+          "formerRequired": true,
+          "requiredMessage": "You must enter your former city.",
+          "pattern": "^[A-Za-z0-9](\\.?[-' ]?[A-Za-z0-9]*)*$",
+          "patternMessage": "You have entered invalid characters.",
+          "formerAddress": true,
+          "maxLength": 27
+        },
+        {
+          "name": "f_stateSelect",
+          "type": "select",
+          "options": "content.states",
+          "formerRequired": true,
+          "requiredMessage": "You must enter your former state.",
+          "formerAddress": true
+        }
+      ],
+      [
+        {
+          "name": "dayphone",
+          "label": "PHONE NUMBER",
+          "placeholder": "(###) ###-####",
+          "required": true,
+          "requiredMessage": "You must enter your phone number.",
+          "pattern": "^\\s*(1\\D*)?\\D*\\d{3}\\D*\\d{3}\\D*\\d{4}\\s*$",
+          "patternMessage": "You must enter a valid phone number.",
+          "vpv": "/Account/Signup/PhoneNumber",
+          "maxLength": 24,
+          "type": "tel",
+          "mask": "(999) 999-9999"
+        },
+        {
+          "name": "dob",
+          "type": "dob",
+          "label": "DATE OF BIRTH",
+          "required": true,
+          "pattern": "^\\d{4}([-])\\d{2}\\1\\d{2}$",
+          "vpv": "/Account/Signup/DateOfBirth"
+        },
+        {
+          "name": "ssn",
+          "type": "ssn",
+          "label": "SOCIAL SECURITY NUMBER",
+          "label_4": "LAST 4 SSN",
+          "inputClasses": "size-limited centered-text spaced-letters",
+          "required": true,
+          "pattern": "^\\d+$"
+        },
+        {
+          "name": "cam_username",
+          "label": "USERNAME",
+          "placeholder": "Username",
+          "required": true,
+          "requiredMessage": "You must enter your username.",
+          "pattern": "^[a-zA-Z]{1}[0-9A-Za-z]{5,11}$",
+          "patternMessage": "Please enter a username between 6 and 12 characters. Alphanumeric only, first character must be a letter.",
+          "vpv": "/Account/Signup/Username",
+          "maxLength": 12
+        },
+        {
+          "name": "cam_password",
+          "type": "password",
+          "label": "PASSWORD",
+          "placeholder": "Password",
+          "required": true,
+          "requiredMessage": "Your must enter your password.",
+          "pattern": "(?=^[0-9A-Za-z]{8,12}$)((.{0,10}[0-9][A-Za-z].*)|(.{0,10}[A-Za-z][0-9].*))",
+          "patternMessage": "Please enter a password between 8 and 12 characters that contains both letters and numbers.",
+          "vpv": "/Account/Signup/Password",
+          "confirm": true,
+          "confirmCaseSensitive": true,
+          "confirmSuccessVPV": "/Account/Signup/PasswordConfirm",
+          "maxLength": 12
+        },
+        {
+          "name": "promo_code",
+          "label": "PROMO CODE (optional)",
+          "placeholder": "Promo Code",
+          "pattern": "^[A-Za-z0-9]{1,16}$",
+          "patternMessage": "Your promo code must be between 1 and 16 characters. Letters and numbers only.",
+          "maxLength": 16,
+          "showCode": true
+        },
+        {
+          "name": "bonus_code",
+          "label": "BONUS CODE (optional)",
+          "placeholder": "Bonus Code",
+          "pattern": "^[A-Za-z0-9]{1,16}$",
+          "patternMessage": "Your bonus code must be between 1 and 16 characters. Letters and numbers only.",
+          "maxLength": 16,
+          "showCode": false
+        }
+      ]
+    ],
+    "useAnalyticsApi": true,
+    "customerTransactionValue": 25.00,
+    "pageLoadVPV": "/Account/Signup/Enter",
+    "pageUnloadVPV": "/Account/Signup/Exit",
+    "submitVPV": "/Account/Signup/Submitted",
+    "successVPV": "/Account/Signup/Success",
+    "prepopulateFromZIP": true,
+    "requireSSN": true,
+    "ssnMode": 0,
+    "performBonusOptIn": true,
+    "termsSource": "https://www.twinspires.com/api/get-user-agreement",
+    "register": {
+      "autoLogin": true,
+      "successRedirect": "http://www.twinspires.com/login",
+      "failureRedirect": "https://www.twinspires.com/account/register/failed"
+    },
+    "autoLogin": {
+      "useCallbacks": true,
+      "successCallback": "registrationSuccess",
+      "failureCallback": "registrationFailure",
+      "fullPostTarget": "https://www.twinspires.com/php/login.php",
+      "successRedirect": "http://www.twinspires.com/php/success.php",
+      "failureRedirect": "http://www.twinspires.com/login"
+    },
+    "domain": "twinspires.com",
+    "messages": {
+      "restrictedState": "Sorry! Your state prohibits residents from online wagering.",
+      "restrictedZip": "Sorry! Your municipality prohibits residents from online wagering."
+    },
+    "supportPhone": "1-877-774-7371",
+    "affiliateDisplayName": "TwinSpires",
+    "regSupportPhone": "1-855-845-5035"
+  }
+}

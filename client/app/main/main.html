@@ -1,5 +1,216 @@
-<div id="node-registration" class="adw-registration-node node clearfix">
-  <div class="row">
+<div id="node-registration" class="adw-registration-node container clearfix">
+
+    <div registration="">
+
+        <x-ts-notifications-area>
+            <!-- ngRepeat: notice in notificationSvc.notices -->
+        </x-ts-notifications-area>
+        <div id="registration" class="registration-box">
+            <form class="registration" name="form" ng-submit="vm.register(form)"  novalidate>
+
+                <div class="registration-body">
+                    <section class="registration-fields">
+
+                        <div class="sectionHeader center" id="contactInfo">
+                            Contact Information
+                        </div>
+                        <div id="registrationEmailBox" class="registration-field form-group"
+                             ng-class="{'has-success': form.email.$valid && vm.submitted,
+                                        'has-error': form.email.$invalid && vm.submitted || form.email.$invalid && form.email.$dirty}">
+                            <label for="registrationEmail" class="ng-binding tsn-label">
+                                Email
+                            </label>
+
+                            <div class="registration-input-wrapper">
+                                <input id="registrationEmail" name="email" class="form-control"
+                                       type="email"  ng-model="vm.user.email" required/>
+                                <div class="help-block" ng-show="form.email.$error.required && form.email.$dirty">
+                                    <span ng-message="required">This field is required.</span>
+                                    <span ng-message="email">Email address must be valid.</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="registrationPhoneBox" class="registration-field form-group"
+                             ng-class="{'has-success': form.mobile.$valid && vm.submitted,
+                                        'has-error': form.mobile.$invalid && vm.submitted || form.mobile.$invalid && form.mobile.$dirty}">
+                                <label for="registrationPhone"
+                                       class=" ng-binding tsn-label">
+                                    Mobile
+                                </label>
+
+                                <div class="registration-input-wrapper">
+                                    <input name="mobile" id="registrationPhone" class="form-control" ng-blur="validateField(field, true)" ng-class="{ 'error' : hasNonEmptyValue(errors, field.mobile),
+                'success' : validated.hasOwnProperty(field.mobile) && !hasNonEmptyValue(errors, field.mobile),
+                '' : hasNonEmptyValue(field, 'inputClasses')}" ui-mask="(999) 999-9999"
+                                           ui-options="{clearOnBlur: false}" maxlength="10"
+                                           pattern=".*" placeholder="" type="tel" ng-model="vm.user.mobile" required/>
+                                    <div class="help-block" ng-show="form.mobile.$error.required && form.mobile.$dirty">
+                                        <span ng-message="required">This field is required.</span>
+                                        <span ng-message="mobile">Must be valid 10-digit number.</span>
+                                    </div>
+                                </div>
+                        </div>
+
+                    </section>
+
+                    <section class="registration-fields">
+
+                        <div class="registration-field" id="registrationAddrBox" class="registration-field form-group"
+                             ng-class="{'has-success': form.address.$valid && vm.submitted,
+                                        'has-error': form.address.$invalid && vm.submitted || form.address.$invalid && form.address.$dirty}">
+                            <label for="registrationAddr"
+                                   ng-class="hasNonEmptyValue(field, 'labelClasses') ? field.labelClasses : ''"
+                                   class=" ng-binding tsn-label">
+                                Address
+                            </label>
+
+                            <div class="registration-input-wrapper "
+                                 ng-class="field.hasOwnProperty('formerAddress') ? 'registration-former-address' : ''">
+                                <input name="address" id="registrationAddr" class="form-control" ui-mask=""
+                                       ui-options="{clearOnBlur: false}" maxlength="80"
+                                       type="text" ng-model="vm.user.address" required/>
+                                <div class="help-block" ng-show="form.address.$error.required && form.address.$dirty">
+                                    <span ng-message="required">This field is required.</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="registration-field " id="registrationZipBox" class="registration-field form-group"
+                             ng-class="{'has-success': form.zipcode.$valid && vm.submitted,
+                                        'has-error': form.zipcode.$invalid && vm.submitted || form.zipcode.$invalid && form.zipcode.$dirty}">
+
+                                <label for="registrationZip"
+                                       ng-class="hasNonEmptyValue(field, 'labelClasses') ? field.labelClasses : ''"
+                                       class=" ng-binding tsn-label">
+                                    Zip code
+                                </label>
+
+                                <div class="registration-input-wrapper">
+                                    <input id="registrationZip" maxlength="5" name="zipcode"
+                                           type="tel" class="form-control"
+                                           ng-model="vm.user.zipcode" required/>
+                                    <div class="help-block"
+                                         ng-show="form.zipcode.$error.required && form.zipcode.$dirty">
+                                        <span ng-message="required">This field is required.</span>
+                                    </div>
+
+                                </div>
+
+                        </div>
+                        <div class="registration-field " id="registrationCityBox" class="registration-field form-group"
+                             ng-class="{'has-success': form.city.$valid && vm.submitted,
+                                        'has-error': form.city.$invalid && vm.submitted || form.city.$invalid && form.city.$dirty}">
+                                <label for="registrationCity"
+                                       class="ng-binding tsn-label">
+                                    City
+                                </label>
+
+                                <div class="registration-input-wrapper">
+                                    <input name="city"  id="registrationCity" maxlength="27" type="text" class="form-control"
+                                           ng-model="vm.user.city" required/>
+                                    <div class="help-block"
+                                         ng-show="form.city.$error.required && form.city.$dirty">
+                                        <span ng-message="required">This field is required.</span>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="registration-field " id="registrationStateSelectBox">
+
+                                <div class="registration-input-wrapper select-wrapper form-group"
+                                     ng-class="{'has-success': form.state.$valid && vm.submitted,
+                                        'has-error': form.state.$invalid && vm.submitted || form.state.$invalid && form.state.$dirty}">
+                                    <label for="registrationStateSelect"
+                                           class="ng-binding tsn-label">
+                                        State
+                                    </label>
+                                    <select id="registrationStateSelect"
+                                            class="form-control"
+                                            ng-model="vm.user.state" required/>
+                                        <option value="0" selected="selected"></option>
+                                        <option value="1">Alabama</option>
+                                        <option value="2">Alaska</option>
+                                        <option value="3">American Samoa</option>
+                                        <option value="4">Arizona</option>
+                                        <option value="5">Arkansas</option>
+                                        <option value="6">California</option>
+                                        <option value="7">Colorado</option>
+                                        <option value="8">Connecticut</option>
+                                        <option value="9">Delaware</option>
+                                        <option value="10">District of Columbia</option>
+                                        <option value="11">Florida</option>
+                                        <option value="12">Georgia</option>
+                                        <option value="13">Guam</option>
+                                        <option value="14">Hawaii</option>
+                                        <option value="15">Idaho</option>
+                                        <option value="16">Illinois</option>
+                                        <option value="17">Indiana</option>
+                                        <option value="18">Iowa</option>
+                                        <option value="19">Kansas</option>
+                                        <option value="20">Kentucky</option>
+                                        <option value="21">Louisiana</option>
+                                        <option value="22">Maine</option>
+                                        <option value="23">Maryland</option>
+                                        <option value="24">Massachusetts</option>
+                                        <option value="25">Michigan</option>
+                                        <option value="26">Minnesota</option>
+                                        <option value="27">Mississippi</option>
+                                        <option value="28">Missouri</option>
+                                        <option value="29">Montana</option>
+                                        <option value="30">Nebraska</option>
+                                        <option value="31">Nevada</option>
+                                        <option value="32">New Hampshire</option>
+                                        <option value="33">New Jersey</option>
+                                        <option value="34">New Mexico</option>
+                                        <option value="35">New York</option>
+                                        <option value="36">North Carolina</option>
+                                        <option value="37">North Dakota</option>
+                                        <option value="38">Northern Mariana Islands</option>
+                                        <option value="39">Ohio</option>
+                                        <option value="40">Oklahoma</option>
+                                        <option value="41">Oregon</option>
+                                        <option value="42">Pennsylvania</option>
+                                        <option value="43">Puerto Rico</option>
+                                        <option value="44">Rhode Island</option>
+                                        <option value="45">South Carolina</option>
+                                        <option value="46">South Dakota</option>
+                                        <option value="47">Tennessee</option>
+                                        <option value="48">Texas</option>
+                                        <option value="49">U.S. Minor Outlying Islands</option>
+                                        <option value="50">U.S. Virgin Islands</option>
+                                        <option value="51">Utah</option>
+                                        <option value="52">Vermont</option>
+                                        <option value="53">Virginia</option>
+                                        <option value="54">Washington</option>
+                                        <option value="55">West Virginia</option>
+                                        <option value="56">Wisconsin</option>
+                                        <option value="57">Wyoming</option>
+                                    </select>
+                                    <div class="help-block"
+                                         ng-show="form.state.$error.required && form.state.$dirty">
+                                        <span ng-message="required">This field is required.</span>
+                                    </div>
+                                </div>
+
+                        </div>
+
+                    </section>
+                </div>
+                <div>
+                    <button class="btn btn-inverse btn-lg btn-register" type="submit">
+                        Sign up
+                    </button>
+                    <a class="btn btn-default btn-lg btn-login" ui-sref="login">
+                        Login
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Features:</h1>
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">

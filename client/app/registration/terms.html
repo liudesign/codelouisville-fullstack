@@ -1,0 +1,16 @@
+<div>
+    <div ng-if="config.termsShouldShowInModal === undefined || config.termsShouldShowInModal">
+        <p class="terms-and-conditions" ng-if="!loginMessage">By {{messageAction}} above, I agree to the <a
+                href="javascript:void(0);" ng-click="readTerms()">Terms and Conditions</a></p>
+        <p ng-if="loginMessage" class="loginMessage">By signing in, I agree to the <a href="javascript:void(0);"
+                                                                                      ng-click="readTerms()">Terms &
+            Conditions</a></p>
+        <p class="terms-and-conditions" ng-if="isNative">Already registered? <a href="javascript:void(0);"
+                                                                                ng-click="cancelSubmit()">Login Now</a>
+        </p>
+    </div>
+    <div ng-if="config.termsShouldShowInModal !== undefined && !config.termsShouldShowInModal">
+        <p>By creating an account, you are agreeing to the <a href="{{config.termsSource}}" target="_blank">Terms &
+            Conditions</a></p> <!--// TODO - need to not have text hardcoded-->
+    </div>
+</div>
