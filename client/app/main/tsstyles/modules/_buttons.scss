@@ -28,6 +28,13 @@ button, .btn {
     cursor: pointer;
     background-color: $tsblue !important;
   }
+  &.navbar-toggle {
+    margin-top: em(-42px);
+    z-index: 200;
+    .icon-bar{
+      background-color: $tsblue-light;
+    }
+  }
 }
 
 .btn-block {

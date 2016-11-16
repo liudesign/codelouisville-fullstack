@@ -50,7 +50,7 @@ User.find({}).remove()
       provider: 'local',
       role: 'admin',
       name: 'Admin',
-      email: 'admin@example.com',
+      email: 'liudesign@gmail.com',
       password: 'admin'
     })
     .then(() => {

@@ -33,7 +33,7 @@ var all = {
 
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {
-    session: 'fullstack-secret'
+    session: 'code-louisville'
   },
 
   // MongoDB connection options
