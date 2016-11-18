@@ -31,6 +31,17 @@ form, .form {
   }
 }
 
+.form-group{
+  position: relative;
+
+  > label{
+    position: absolute;
+    top: 15px;
+    left: 18px;
+    font-weight: 500;
+  }
+}
+
 input,
 textarea, .form-control {
   background-color: transparentize($tsblue-light, .01);
@@ -57,7 +68,7 @@ textarea, .form-control {
 }
 input, #registrationStateSelect,
 .form-control{
-  padding-left: em(110px);
+  padding-left: em(140px);
 }
 
 //todo turn to mixins and variables - main gradient

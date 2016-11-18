@@ -1,14 +1,13 @@
 <header class="tsn-fixed">
-    <div class="tsn-branding tsn-nav-top">
         <nav class="tsn-branding tsn-nav-top">
             <ul class="tsn-navbar nav navbar-nav">
-                <li class="tsn-navbar-items">
-                    <a href="" class="tsn-arrowleft tsn-navbar-items-a"></a>
+                <li class="tsn-navbar-items left">
+                    <a href="" class="tsn-arrowleft tsn-navbar-items-a ng-hide"></a>
                 </li>
-                <li class="tsn-navbar-items">
+                <li class="tsn-navbar-items branding-col">
                     <a href="/" class="tsn-logo"></a>
                 </li>
-                <li class="tsn-navbar-items">
+                <li class="tsn-navbar-items right">
                     <a href="" class="tsn-arrowright tsn-navbar-items-a ng-hide"></a>
                 </li>
             </ul>
@@ -25,17 +24,16 @@
                     <li ng-repeat="item in $ctrl.menu" class="tsn-navbar-items" ui-sref-active="active">
                         <a ui-sref="{{item.state}}" class="tsn-current tsn-icon tsn-joinnow tsn-navbar-items-a">{{item.title}}</a>
                     </li>
-                    >
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
+                    <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+                    <li ng-show="$ctrl.isLoggedIn()"><p class="navbar-text">Hello {{ $ctrl.getCurrentUser().name }}</p></li>
+                    <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span
+                            class="glyphicon glyphicon-cog"></span></a></li>
+                    <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
                 </ul>
             </nav>
-            <!--<ul class="nav navbar-nav navbar-right">-->
-                <!--<li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>-->
-                <!--<li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>-->
-                <!--<li ng-show="$ctrl.isLoggedIn()"><p class="navbar-text">Hello {{ $ctrl.getCurrentUser().name }}</p></li>-->
-                <!--<li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span-->
-                        <!--class="glyphicon glyphicon-cog"></span></a></li>-->
-                <!--<li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>-->
-            <!--</ul>-->
         </div>
-    </div>
 </header>

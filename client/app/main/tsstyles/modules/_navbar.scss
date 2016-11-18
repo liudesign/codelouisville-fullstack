@@ -2,10 +2,29 @@
 // Navbar
 // ==========================================================================
 
-.navbar {	
+.navbar {
 	position: relative;
 	@include mq(medium) {
 		margin-top: em(54px);
 		margin-bottom: 0;
+	}
+}
+
+.navbar-collapse {
+  padding: 0;
+}
+
+
+#navbar-main{
+	.navbar-right{
+		position: relative;
+		top: 0;
+		right:0;
+		margin-top: em(-40px);
+		a, p{
+			color: $tsblue-light;
+			font-size: em(13px);
+			font-weight: 500;
+		}
 	}
 }

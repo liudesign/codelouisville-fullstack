@@ -1,40 +1,40 @@
 'use strict';
-
+// test file for karma
 import main from './main.component';
 import {
-  MainController
+    MainController
 } from './main.component';
 
-describe('Component: MainComponent', function() {
-  beforeEach(angular.mock.module(main));
-  beforeEach(angular.mock.module('stateMock'));
-  beforeEach(angular.mock.module('socketMock'));
+describe('Component: MainComponent', function () {
+    beforeEach(angular.mock.module(main));
+    beforeEach(angular.mock.module('stateMock'));
+    beforeEach(angular.mock.module('socketMock'));
 
-  var scope;
-  var mainComponent;
-  var state;
-  var $httpBackend;
+    var scope;
+    var mainComponent;
+    var state;
+    var $httpBackend;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function(_$httpBackend_, $http, $componentController, $rootScope, $state,
-    socket) {
-    $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('/api/things')
-      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+    // Initialize the controller
+    beforeEach(inject(function (_$httpBackend_, $http, $componentController, $rootScope, $state,
+                                socket) {
+        $httpBackend = _$httpBackend_;
+        $httpBackend.expectGET('/api/comments')
+            .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
 
-    scope = $rootScope.$new();
-    state = $state;
-    mainComponent = $componentController('main', {
-      $http,
-      $scope: scope,
-      socket
+        scope = $rootScope.$new();
+        state = $state;
+        mainComponent = $componentController('main', {
+            $http,
+            $scope: scope,
+            socket
+        });
+    }));
+
+    it('should attach a list of comments to the controller', function () {
+        mainComponent.$onInit();
+        $httpBackend.flush();
+        expect(mainComponent.Comments.length)
+            .to.equal(4);
     });
-  }));
-
-  it('should attach a list of things to the controller', function() {
-    mainComponent.$onInit();
-    $httpBackend.flush();
-    expect(mainComponent.awesomeThings.length)
-      .to.equal(4);
-  });
 });

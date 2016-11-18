@@ -4,3 +4,29 @@
     padding:0;
   }
 }
+
+.comment-text, .comment-name{
+  margin: em(15px);
+  padding: em(10px) 0;
+  font-size: em(14px);
+}
+.comment-name{
+  font-weight: bold;
+}
+
+
+  ul.nav-tabs{
+    li{
+      a{
+        padding-right: em(60px);
+
+        .close{
+          font-size: em(30px);
+          width: 30px;
+          height:30px;
+          border-radius: 50%;
+          margin: -30px -40px 0 0;
+        }
+      }
+    }
+  }

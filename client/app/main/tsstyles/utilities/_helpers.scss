@@ -60,3 +60,14 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+//use with flex display
+
+.left {
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+.right {
+  margin-left: auto;
+}
