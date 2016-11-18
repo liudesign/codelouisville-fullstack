@@ -16,6 +16,7 @@ Project is a test prototype for a marketing feature in Twin Spires' v.next webap
 
 ##The setup
 
+```
 ├─ client                           Front-end directory
 │   ├─ app                          - All  app specific components: main, account, admin
 │   │   │                             With yeoman add component using
@@ -40,7 +41,7 @@ Project is a test prototype for a marketing feature in Twin Spires' v.next webap
     │   └── environment             - Configuration specific to the environment the server is being run in
     └── views                       - Server rendered 404 page
 
-
+```
 ### Running the app
 You'll need to have *NodeJS/NPM* and *Mongo DB* installed. NPM, Node Package Manager, will install the rest - Gulp, Express and other dependencies, courtesy of the package.json from Angular-fullstack repo.  
 
